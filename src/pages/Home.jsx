@@ -4,33 +4,19 @@ import {Grid} from "@mui/material";
 import FeaturedPost from "../components/home_component/FeaturedPost";
 import Main from "../components/home_component/Main";
 import Sidebar from "../components/home_component/Sidebar";
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../firebase-config";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchCards, fetchMdPost, fetchSideBarText} from "../redux/actions/main_action";
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-  const [sideBar, setSideBar] = useState({
-    title: '',
-    description: '',
-    archives: [],
-    social: '',
-  });
+  const posts = useSelector(state => state.main.posts);
+  const sideBar = useSelector(state => state.main.sideBar)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    const getPostsFromFireBase = async () => {
-      const userCollectionRef = collection(db, "post")
-      const data = await getDocs(userCollectionRef);
-      setPosts(data.docs.map(doc => {return doc.data()}))
-    }
-    const getSideBarText = async  () => {
-      const userCollectionRef = collection(db, "sidebar")
-      const data = await getDocs(userCollectionRef)
-      setSideBar(data.docs[0].data())
-    }
-    console.log('get')
-    getPostsFromFireBase();
-    getSideBarText();
-  }, [])
+    console.log('home page init');
+    [fetchCards(), fetchSideBarText(), fetchMdPost()]
+      .map(funk => dispatch(funk))
+  }, [dispatch])
 
   return (
     <div>

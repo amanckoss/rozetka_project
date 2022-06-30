@@ -3,9 +3,16 @@ import {Grid, Link, Paper, Typography} from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import IconButton from "@mui/material/IconButton";
+import {fetchLikes} from "../../redux/actions/shop_action";
+import {useDispatch} from "react-redux";
 
 const ShopItem = props => {
-  const {item, onLikeClicked} = props
+  const {item} = props
+  const dispatch = useDispatch()
+
+  function onLikeClicked(id) {
+    dispatch(fetchLikes(id, item.data.like))
+  }
 
   return (
     <Grid item md={2} xs={3} sx={{borderRight: 1, borderColor: 'divider', position: 'relative'}}>

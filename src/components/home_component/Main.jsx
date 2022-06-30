@@ -1,22 +1,11 @@
 import {Divider, Grid, Typography} from "@mui/material";
 import Markdown from "./Markdown";
 import PropTypes from "prop-types";
-import {useEffect, useState} from "react";
-import {collection, getDocs} from "firebase/firestore";
-import {db} from "../../firebase-config";
+import {useSelector} from "react-redux";
 
 export default function Main(props) {
   const { title } = props;
-  const [posts, setPosts] = useState([]);
-  useEffect(() => {
-    const userCollectionRef = collection(db, "md_post")
-
-    const getPosts = async () => {
-      const data = await getDocs(userCollectionRef);
-      setPosts(data.docs.map(doc => {return doc.data()}))
-    }
-    getPosts()
-  }, [])
+  const posts = useSelector(state => state.main.md_post);
 
   return (
     <Grid

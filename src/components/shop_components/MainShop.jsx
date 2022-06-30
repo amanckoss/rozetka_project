@@ -1,8 +1,5 @@
-import React, {useEffect} from 'react';
 import {Box, Grid, Paper} from "@mui/material";
 import ShopSection from "./ShopSection";
-import {useDispatch} from "react-redux";
-import {fetchPosts} from "../../redux/action";
 
 const post = {
   text: 'Happy cat',
@@ -10,12 +7,6 @@ const post = {
 }
 
 const MainShop = () => {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    console.log('work')
-    dispatch(fetchPosts())
-  }, [])
 
   return (
     <Grid item xs={12} md={10}>
