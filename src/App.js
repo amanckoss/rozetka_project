@@ -1,29 +1,21 @@
 import './App.css';
-import {Container, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
-import {orange} from "@mui/material/colors";
-import Header from "./components/AppBar";
-import Counter from "./components/Counter";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: orange[500],
-    }
-  }
-})
+import {Routes, Route} from "react-router-dom";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
+import Additional from "./pages/Additional";
+import Authorization from "./pages/Authorization";
+import Shop from "./pages/Shop";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline/>
-      <Container maxWidth={"lg"}>
-        <Header/>
-        <main>
-
-        </main>
-      </Container>
-      <Counter/>
-    </ThemeProvider>
+    <Routes>
+      <Route path="/" element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="additional" element={<Additional/>}/>
+        <Route path="authorization" element={<Authorization/>}/>
+        <Route path="shop" element={<Shop/>}/>
+      </Route>
+    </Routes>
   );
 }
 
