@@ -21,5 +21,4 @@ export function fetchLikes(itemSection, itemId) {
       like: !updateItem.data.like
     });
   }
-  fghjgfkhjfgk
 }
