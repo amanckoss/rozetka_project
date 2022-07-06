@@ -13,19 +13,23 @@ const theme = createTheme({
     primary: {
       light: '#757ce8',
       main: green[500],
-      dark: '#002884',
+      dark: '#ff7961',
       contrastText: '#fff',
     },
     secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
+      light: '#aab6fe',
+      main: '#7986cb',
+      dark: '#49599a',
       contrastText: '#000',
       success: '#ff9800'
     },
     success: {
       main: '#ff9800'
-    }
+    },
+    secondColor: {
+      light: '#3f51b5',
+      main: '#3f51b5'
+    },
   },
 });
 

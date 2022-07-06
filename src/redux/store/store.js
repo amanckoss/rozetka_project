@@ -2,6 +2,7 @@ import {compose, configureStore} from '@reduxjs/toolkit'
 import {postsReducer} from "../reducers/postsReducer";
 import createSagaMiddleware from 'redux-saga'
 import {mainPageReducer} from "../reducers/mainPageReducer";
+import {selectedItemReducer} from "../reducers/selectedItemReducer";
 
 // const sagaMiddleware = createSagaMiddleware()
 
@@ -9,6 +10,7 @@ export default configureStore({
   reducer: {
     shop: postsReducer,
     main: mainPageReducer,
+    shopSelect: selectedItemReducer,
   },
 }, compose(
   // sagaMiddleware,
